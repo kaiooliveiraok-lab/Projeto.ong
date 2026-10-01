@@ -1,0 +1,282 @@
+:root {
+    /* Cores */
+    --cor-primaria: #2E7D32;
+    --cor-primaria-escura: #1B5E20;
+    --cor-primaria-clara: #66BB6A;
+    --cor-secundaria: #1565C0;
+    --cor-destaque: #FFB300;
+    --cor-fundo: #F5F5F5;
+    --cor-branco: #FFFFFF;
+    --cor-texto: #263238;
+
+    /* Tipografia */
+    --fonte-xs: 0.75rem;
+    --fonte-sm: 0.875rem;
+    --fonte-md: 1rem;
+    --fonte-lg: 1.5rem;
+    --fonte-xl: 2.5rem;
+
+    /* Espaçamentos */
+    --espaco-xs: 0.25rem;
+    --espaco-sm: 0.5rem;
+    --espaco-md: 1rem;
+    --espaco-lg: 2rem;
+    --espaco-xl: 4rem;
+}
+/* Estilos gerais */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: var(--fonte-md);
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+}
+
+/* Cabeçalho */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--espaco-md) var(--espaco-lg);
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+}
+
+/* Menu de navegação */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-md);
+}
+
+nav a {
+    color: var(--cor-branco);
+    text-decoration: none;
+}
+
+/* Formulário */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-md);
+}
+
+/* Botão */
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Layout principal com Grid de 12 colunas */
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: var(--espaco-xl) auto;
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--espaco-lg);
+}
+
+/* Seções */
+
+section {
+    grid-column: span 12;
+    background-color: var(--cor-branco);
+    padding: var(--espaco-lg);
+    border-radius: 8px;
+}
+/* Responsividade */
+
+/* Tablet */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: var(--espaco-md);
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    main {
+        width: 95%;
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    section {
+        grid-column: span 6;
+    }
+}
+
+/* Celular */
+@media (max-width: 480px) {
+    header {
+        padding: var(--espaco-md);
+    }
+
+    nav {
+        flex-direction: column;
+        gap: var(--espaco-sm);
+    }
+
+    main {
+        width: 95%;
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        grid-column: span 1;
+        padding: var(--espaco-md);
+    }
+
+    h1 {
+        font-size: var(--fonte-lg);
+    }
+
+    h2 {
+        font-size: var(--fonte-lg);
+    }
+}
+/* Menu hambúrguer */
+
+#menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Menu hambúrguer no celular */
+@media (max-width: 480px) {
+    .menu-icon {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #menu-toggle:checked ~ nav {
+        display: flex;
+    }
+}
+/* Dropdown */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--cor-branco);
+    min-width: 180px;
+    padding: var(--espaco-sm);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu a {
+    display: block;
+    color: var(--cor-texto);
+    padding: var(--espaco-sm);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+/* Estados dos botões */
+
+button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border: none;
+    padding: var(--espaco-sm) var(--espaco-lg);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    background-color: red;
+}
+
+button:hover {
+    background-color: var(--cor-primaria-escura);
+}
+
+button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+    background-color: #BDBDBD;
+    color: #757575;
+    cursor: not-allowed;
+}
+/* Validação visual dos campos */
+
+input:focus {
+    outline: 2px solid var(--cor-secundaria);
+    outline-offset: 1px;
+}
+
+input:valid {
+    border: 2px solid var(--cor-primaria);
+}
+
+input:invalid {
+    border: 2px solid #E6C65C;
+}
+
+/* Badge */
+
+.badge {
+    display: inline-block;
+    background-color: var(--cor-primaria-clara);
+    color: var(--cor-texto);
+    padding: var(--espaco-xs) var(--espaco-sm);
+    border-radius: 12px;
+    font-size: var(--fonte-sm);
+    font-weight: bold;
+}
+/* Alerta */
+
+.alerta {
+    background-color: #FFF8E1;
+    color: var(--cor-texto);
+    border-left: 4px solid var(--cor-destaque);
+    padding: var(--espaco-sm) var(--espaco-md);
+    margin: var(--espaco-md) 0;
+    border-radius: 4px;
+}
+/* Toast */
+.toast {
+    position: fixed;
+    right: var(--espaco-md);
+    bottom: var(--espaco-md);
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: var(--espaco-sm) var(--espaco-md);
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
