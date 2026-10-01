@@ -286,3 +286,7 @@ input:invalid {
     outline: 3px solid var(--cor-destaque);
     outline-offset: 3px;
 }
+img {
+    max-width: 100%;
+    height: auto;
+}
